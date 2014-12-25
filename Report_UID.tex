@@ -1,0 +1,665 @@
+\documentclass[11pt, a4paper,svglistings]{report}
+\usepackage{a4wide}
+\usepackage[USenglish]{babel}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{mathtools}
+
+\usepackage[toc,page]{appendix}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+\usepackage{fullpage}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{textcomp}
+
+\usepackage[explicit]{titlesec}
+\usepackage{lmodern}
+\usepackage{lipsum}
+
+\usepackage[USenglish]{babel}
+
+\newlength\chapnumb
+\setlength\chapnumb{4cm}
+
+\titleformat{\chapter}[block]
+{\normalfont\sffamily}{}{0pt}
+{\parbox[b]{\chapnumb}{%
+   \fontsize{120}{110}\selectfont\thechapter}%
+  \parbox[b]{\dimexpr\textwidth-\chapnumb\relax}{%
+    \raggedleft%
+    \hfill{\LARGE#1}\\
+    \rule{\dimexpr\textwidth-\chapnumb\relax}{0.4pt}}}
+\titleformat{name=\chapter,numberless}[block]
+{\normalfont\sffamily}{}{0pt}
+{\parbox[b]{\chapnumb}{%
+   \mbox{}}%
+  \parbox[b]{\dimexpr\textwidth-\chapnumb\relax}{%
+    \raggedleft%
+    \hfill{\LARGE#1}\\
+    \rule{\dimexpr\textwidth-\chapnumb\relax}{0.4pt}}}
+
+\graphicspath{ {./images/} }
+
+\usepackage[labelfont=bf]{caption}
+\begin{document}
+
+\begin{titlepage}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+\center
+
+%----------------------------------------------------------------------------------------
+%	HEADING SECTIONS
+%----------------------------------------------------------------------------------------
+
+\textsc{\LARGE VRIJE UNIVERSITEIT BRUSSEL}\\[1.5cm] 
+\textsc{\Large Faculty of Science and Bio-Engineering Sciences}\\[0.5cm] 
+\textsc{\large Departement of Computer Sciences}\\[0.5cm] 
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\HRule \\[0.7cm]
+{ \huge \bfseries  User Interface Design Task 2: Report}\\[0.4cm] 
+\HRule \\[1.5cm]
+ 
+%----------------------------------------------------------------------------------------
+%	AUTHOR SECTION
+%----------------------------------------------------------------------------------------
+
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+\emph{Authors:}\\
+Laurent \textsc{De Wilde} \\
+Mathias \textsc{Alame} \\
+Tineke \textsc{De Leeuw}
+\end{flushleft}
+\end{minipage}
+~
+\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+\emph{Professor:} \\
+Prof. Dr. Olga \textsc{De Troyer}
+
+\emph{Assistant:} \\
+Dieter \textsc{Van Tieghem}
+\end{flushright}
+\end{minipage}\\[4cm]
+
+%----------------------------------------------------------------------------------------
+%	DATE SECTION
+%----------------------------------------------------------------------------------------
+
+{\large \today}\\[3cm]
+
+%----------------------------------------------------------------------------------------
+%	LOGO SECTION
+%----------------------------------------------------------------------------------------
+
+\includegraphics[width=2.3in]{vub_schild.jpg}\\[4cm] 
+ 
+%----------------------------------------------------------------------------------------
+
+
+%--------------------------------------------------------
+% UITLEG VOOR FIGUREN IN TE VOEGEN
+%--------------------------------------------------------
+
+% Hieronder staat het standaard sjabloon om figuren in te voegen. De tekening wordt op exact die plaats getoond waar je dit stuk code invoegt. (zonder de % tekens uiteraard)
+
+% \begin{figure}[H]
+% \centering
+%   \includegraphics[width=0.9\textwidth]{NAAM-VAN-DE-TEKENING.jpg}
+%  \caption[Verkorte versie voor de List Of Figures]{Lange versie die op het document komt te staan}
+% \end{figure}
+
+%---------------------------------------------------------
+
+
+\end{titlepage}
+
+\tableofcontents
+
+\listoffigures
+
+\newpage
+
+\chapter{User classes and usability requirements}
+
+\section{User classes}
+
+\subsection{Physical characteristics}
+
+\begin{description}
+\item[Age:] 18 - 67. This is why we will use large fonts, big buttons, clear colors to provide a way of letting the users know in one instance what they are looking at and if their action has been successfully completed.
+\item[Sex:] Both men and women will use the tool.
+\item[Vision limitation:] A little light on top of the door will be used to indicate if something went wrong while performing one action. The reasoning behind this is that the light will draw the attention of the user. If nothing went wrong, there is no need to draw the attention of the user, thus the light will not be lit.
+\end{description}
+
+\subsection{Cultural differences}
+
+Due to the fact that this tool will be used in an university, a lot of different cultures will get in touch with this tool. That is why everything will be implemented in English. Everyone has some basic knowledge of the English language and even if they don't, the tool will be simple and intuitive enough so that users are able to perform each action without difficulties. 
+
+\subsection{Education}
+
+We can assume that everyone who studies / works at the university has had a minimal amount of education. This should not be a big issue here.
+
+\subsection{Knowledge of task}
+
+The tool will daily be used by students, assistants, professors and other people. It will make the life of the users easier and at one glance one will be able to make appointments and even see if one has appointments assigned to them by others. (if one is a professor or assistant). The use of special vocabulary will not be used because we will implement the system in a very simple way. The less you need to read, the faster you will be able to perform the action.
+
+\subsection{Computer experience}
+
+This will be used by the WISE members / students of the VUB. We can thus assume that every user has a basic computer knowledge. That is why we are putting the users in the `competent performer' category.
+
+
+\subsection{User classes}
+
+\textbf{Primary user}
+\begin{itemize}
+\item Type of user: direct
+\item Level of task knowledge: high
+\item Frequency of use: frequent  
+\item Existing computer skills: high 
+\item Other systems that will be used concurrently:
+\item Motivation for using system: appointments can be made with this type of user and this type of user can also make appointments.
+\end{itemize}
+\textbf{Secondary user}
+\begin{itemize}
+\item Type of user: direct
+\item  Level of task knowledge: high
+\item Frequency of use: frequent
+\item Existing computer skills: high 
+\item Other systems that will be used concurrently:
+\item Motivation for using system: appointments can be made with this type of user and this type of user can also make appointments. 
+\end{itemize}
+\textbf{Others}
+\begin{itemize}
+\item Type of user: direct
+\item Level of task knowledge: high 
+\item Frequency of use: frequent 
+\item Existing computer skills: depends on the user, some users can have much experience, while others don’t.
+\item Other systems that will be used concurrently: 
+\item Motivation for using system: this type of user can only make appointments.
+\end{itemize}
+
+
+\section{Usability requirements}
+
+\textbf{The availability status has to be visible from within at least 5 meters.}
+\begin{itemize}
+\item{Motivation: the user can see in a glance if the primary user is available or not.}
+\item{User classes: primary user, secondary user, others.}
+\item{Measuring concept: user satisfaction.}
+\item{Measuring method: task scenario. Afterwards: questionnaire.}
+\item{Current level: not supported.}
+\item{Worst level: visible from within 3 meters.}
+\item{Average level: visible from within 5 meters.}
+\item{Best level: visible from within 8 meters. \\ \\}
+\end{itemize}
+\textbf{If the primary user is not available, it will be represented with visuals.}
+\begin{itemize}
+\item{Motivation: the user can see in a glance the unavailabilty of the primary user.}
+\item{User classes: primary user, secondary user, others.}
+\item{Measuring concept: user satisfaction.}
+\item{Measuring method: task scenario. Afterwards: questionnaire.}
+\item{Current level: not supported.}
+\item{Worst level: the visuals are recognized from within 3 meters.}
+\item{Average level: the visuals are recognized from within 5 meters.}
+\item{Best level: the visuals are recognized from within 8 meters. \\ \\}
+\end{itemize}
+\textbf{It should be clearly visible how to make an appointment}
+\begin{itemize}
+\item{Motivation: the faster an appointment is made, the faster the user can focus again on his tasks.}
+\item{User classes: primary user, secondary user, others.}
+\item{Measuring concept: user satisfaction.}
+\item{Measuring method: task scenario. Afterwards: questionnaire.}
+\item{Current level: not supported.}
+\item{Worst level: the user doesn't have any idea there is a possibility to make an appointment.}
+\item{Average level: the user knows he can make an appointment, but doesn't find it directly.}
+\item{Best level: the user knows he can make an appointment and finds a way to do so directly. \\ \\}
+\end{itemize}
+\textbf{The user should be able to cycle fast through the agenda of the primary user}
+\begin{itemize}
+\item{Motivation: the faster the user can find an appointment day, the faster the user can focus again on his tasks.}
+\item{User classes: primary user, secondary user, others.}
+\item{Measuring concept: user satisfaction.}
+\item{Measuring method: task scenario. Afterwards: questionnaire.}
+\item{Current level: not supported.}
+\item{Worst level: a day can be found within 20 seconds.}
+\item{Average level: a day can be found within 10 seconds.}
+\item{Best level: a day can be found within 5 seconds. \\ \\}
+\end{itemize}
+\textbf{A simple / clear overview of the planning of the primary user is presented.}
+\begin{itemize}
+\item{Motivation: with a clear overview, one can search for an appointment more quickly.}
+\item{User classes: primary user, secondary user, others.}
+\item{Measuring concept: user satisfaction.}
+\item{Measuring method: task scenario. Afterwards: questionnaire.}
+\item{Current level: not supported.}
+\item{Worst level: an appointment can be found within 20 seconds.}
+\item{Average level: an appointment can be found within 10 seconds.}
+\item{Best level: an appointment can be found within 5 seconds. \\ \\}
+\end{itemize}
+\textbf{When a user tries to create an appointment on an existing time slot, a clear error message is shown.}
+\begin{itemize}
+\item{Motivation: errors should not be accepted and notifying the user of what he did wrong, is important.}
+\item{User classes: primary user, secondary user, others.}
+\item{Measuring concept: user satisfaction.}
+\item{Measuring method: task scenario. Afterwards: questionnaire.}
+\item{Current level: not supported.}
+\item{Worst level: no error message is shown at all.}
+\item{Average level: the error message is shown, but is vague and not clear to the user.}
+\item{Best level: the error message is shown and to the point. \\ \\}
+\end{itemize}
+\textbf{Multiple ways to log in exist}
+\begin{itemize}
+\item{Motivation: each user has different preferences to log in.}
+\item{User classes: primary user, secondary user, others.}
+\item{Measuring concept: user satisfaction.}
+\item{Measuring method: task scenario. Afterwards: questionnaire.}
+\item{Current level: not supported.}
+\item{Worst level: only one way to log in exist.}
+\item{Average level: there exist two or three ways to log in.}
+\item{Best level: four or more ways to log in are provided. \\ \\}
+\end{itemize}
+\textbf{When text input is needed, an intuitive way is offered.}
+\begin{itemize}
+\item{Motivation: text input is important and users should be able to insert what they want.}
+\item{User classes: primary user, secondary user, others.}
+\item{Measuring concept: user satisfaction.}
+\item{Measuring method: task scenario. Afterwards: questionnaire.}
+\item{Current level: not supported.}
+\item{Worst level: not every character is available when a user needs to input something.}
+\item{Average level: the basic characters are available but not every single character is.}
+\item{Best level: every possible character is available. \\ \\}
+\end{itemize}
+\textbf{Adding people to meetings should be straightforward.}
+\begin{itemize}
+\item{Motivation: adding people for meetings is important and users should be able to do this in a blink of an eye.}
+\item{User classes: primary user.}
+\item{Measuring concept: user satisfaction.}
+\item{Measuring method: task scenario. Afterwards: questionnaire.}
+\item{Current level: not supported.}
+\item{Worst level: users don't understand how to add other users to the meeting.}
+\item{Average level: the user knows where he can add other users but can't figure out how to do this.}
+\item{Best level: the user knows where and how to add other users to the meeting. \\ \\}
+\end{itemize}
+\textbf{The overview with available people should be sortable.}
+\begin{itemize}
+\item{Motivation: the list of available people can become quite long, thus sorting the list helps the user to find a person more quickly.}
+\item{User classes: primary user, secondary user, others.}
+\item{Measuring concept: quality of task performance.}
+\item{Measuring method: time taken to perform the task.}
+\item{Current level: not supported.}
+\item{Worst level: users don't understand how to add other users to the meeting.}
+\item{Average level: the user knows where he can add other users but can't figure out how to do this.}
+\item{Best level: the user knows where and how to add other users to the meeting. \\ \\}
+\end{itemize}
+
+\chapter{Task scenario's}
+
+\section{Task scenario's: secondary users}
+
+\subsection{Task scenario: login using username and password}
+
+Type: typical \\
+Situation: the user whishes to login using his/her username and password. \\
+Script:
+\begin{enumerate}
+\item System displays the four possible login methods.
+\item User pushes the button to login using a username and password.
+\item System shows two textfields and a virtual keyboard.
+\item User provides his username and password.
+\item System validates the login.
+\begin{itemize}
+\item \textbf{Wrong:} system shows a feedback message that the user is not authorized to the system, thus not authorized to make an appointment.
+\item \textbf{Correct:} system redirects the user to the  confirmation screen.
+\end{itemize}
+\end{enumerate}
+CTT for this task see figure %\ref{}
+
+\subsection{Task scenario: login using a fingerprint}
+
+Type: typical \\
+Situation: the user whishes to login using his/her username and password. \\
+Script:
+\begin{enumerate}
+\item System displays the four possible login methods.
+\item User pushes the button to login using a fingerprint.
+\item System displays a circle to indicate where the user has to put his finger.
+\item User pushes his finger on the given spot.
+\item System validates the fingerprint.
+\begin{itemize}
+\item \textbf{Wrong:} system shows a feedback message that the user is not authorized to the system, thus not authorized to make an appointment.
+\item \textbf{Correct:} system redirects the user to the  confirmation screen.
+\end{itemize}
+\end{enumerate}
+CTT for this task see figure %\ref{}
+
+\subsection{Task scenario: login using QR code}
+
+Type: typical \\
+Situation: the user whishes to login by scanning a QR code \\
+Script:
+\begin{enumerate}
+\item System displays the four possible login methods.
+\item User pushes the button to login using a QR code.
+\item System displays the generated QR code.
+\item User scans the QR code using his smartphone.
+\item (Authentication takes place in the smartphone.)
+\begin{itemize}
+\item \textbf{Wrong:} system receives the error that the user is not authenticated and thus, the system shows a feedback message that the user is not authorized to the system, thus not authorized to make an appointment.
+\item \textbf{Correct:} system redirects the user to the confirmation screen.
+\end{itemize}
+\end{enumerate}
+CTT for this task see figure %\ref{}
+
+\subsection{Task scenario: login using speech}
+
+Type: typical \\
+Situation: the user whishes to login using voice authentication (speech). \\
+Script:
+\begin{enumerate}
+\item System displays the four possible login methods.
+\item User pushes the button to login using speech.
+\item System outputs a spoken message states that the user can talk.
+\item User provides his name in a spoken manner.
+\item System validates the user's voice input.
+\begin{itemize}
+\item \textbf{Wrong:} system outputs an error sound.
+\item \textbf{Correct:} system outputs an informational sound and redirects the user to the  confirmation screen.
+\end{itemize}
+\end{enumerate}
+CTT for this task see figure %\ref{}
+
+
+\subsection{Task scenario: logout}
+
+Type: exceptinal \\
+Situation: the user whishes to logout. \\
+Script:
+\begin{enumerate}
+\item User presses the logout button.
+\item System shows a confirmation screen.
+\begin{itemize}
+\item \textbf{Confirm:} system redirects user to the begin screen and the user will be logged out.
+\item \textbf{Cancel:} system redirects the user to the agenda page of the primary user.
+\end{itemize}
+\end{enumerate}
+
+
+\subsection{Task scenario: show agenda of primary user}
+
+\label{subsec:agenda}Type: typical \\
+Situation: the user whishes to view  the agenda and planing of the primary user. \\
+Script:
+\begin{enumerate}
+\item User pushes the show agenda button.
+\item System displays the four possible login methods.
+\item User logs in as explained in task scenarios% 1-4.
+\item System redirects user to the agenda and planning of the primary user.
+\end{enumerate}
+
+
+\subsection{Task scenario: select a day}
+
+\label{subsec:day}Type: typical \\
+Situation: the user whishes to select a cerain day  of the primary user's calendar. \\
+Script:
+\begin{enumerate}
+\item User selects the month on the calendar using the buttons to scroll through the months.
+\item System updates the calendar showing the selected month.
+\item User selects the day by clicking on it.
+\item System updates the rightside pane with the detailed information of that day.
+\end{enumerate}
+
+
+\subsection{Task scenario: select an hour}
+
+\label{subsec:hour}Type: typical \\
+Situation: the user whishes to select a cerain hour  of the primary user's calendar at a certain day. \\
+Script:
+\begin{enumerate}
+\item User selects the day on the calendar as explained in task scenario \ref{subsec:day}.
+\item User selects the hour using the up and down arrows.
+\item System updates the minute list.
+\item User can now scroll through that hour.
+\end{enumerate}
+
+
+\subsection{Task scenario: conflicting appointment}
+
+
+\label{subsec:conflict}Type: typical \\
+Situation: a conflict was detected while making an appointment. \\
+Script:
+\begin{enumerate}
+\item System will collor the make appointment screen in red.
+\item User will have to choose another time for the appointment.
+\item System restores the original colors of the window if no conflict is detected.
+\end{enumerate}
+
+
+\subsection{Task scenario: make an appointment}
+
+
+\label{subsec:appointment}Type: typical \\
+Situation: the user whishes to make an appointment. \\
+Script:
+\begin{enumerate}
+\item User presses the show agenda button as in task scenario \ref{subsec:agenda}.
+\item User selects the month and day of when he wants an appointment as in task scenario \ref{subsec:day}.
+\item User can now choose the exact starting hour of the appointment as in task scenario \ref{subsec:hour}.
+\item System will redirect user to another page showing the starting hour and end hour in scrollable lists.
+\item User chooses the end time and can change the start time if he/she wishes to.
+\item System checks for conflicts and will take the appropriate actions as explained in \ref{subsec:conflict}
+\item User clicks on the button to make an appointment.
+\item System redirects user to the confirmation screen.
+\end{enumerate}
+
+
+\subsection{Task scenario: confirmation screen}
+
+
+Type: typical \\
+Situation: the user whishes to make an appointment. \\
+Script:
+\begin{enumerate}
+\item User makes an appointments as in task scenario \ref{subsec:appointment}.
+\item System shows the confirmation message.
+\item User can now choose to confirm the appointment or can cancel it.
+\item System will redirect the user
+\begin{itemize}
+\item \textbf{Confirm:} system shows a confirmation message and system redirects user to the begin screen and the user will be logged out automatically.
+\item \textbf{Cancel:} system redirects the user to the agenda page of the primary user.
+\end{itemize}
+\end{enumerate}
+
+
+\subsection{Task scenario: cancel an appointment}
+
+
+Type: typical \\
+Situation: the user whishes to cancel an appointment. \\
+Script:
+\begin{enumerate}
+\item User presses the show agenda button as in task scenario \ref{subsec:agenda}.
+\item User selects the month and day of when he wants an appointment as in task scenario \ref{subsec:day}.
+\item User can now choose the exact starting hour of the appointment as in task scenario \ref{subsec:hour}.
+\item User chooses his own appointment, which is colored in another color.
+\item System will redirect the user to a deletion confirmation page.
+\item User clicks on delete to actually delete the appointment.
+\item System redirects user
+\begin{itemize}
+\item \textbf{Confirm:} system shows a confirmation message and system redirects user to the begin screen and the user will be logged out automatically.
+\item \textbf{Cancel:} system redirects the user to the agenda page of the primary user.
+\end{itemize}
+\end{enumerate}
+
+\section{Task scenario: primary users}
+A primary user has all the same functionalities as the secondary users. They have a few more privileges that we will explain in this section.
+
+
+\subsection{Task scenario: conflicting appointment}
+
+
+\label{subsec:conflictPrimary}Type: typical \\
+Situation: a conflict was detected while making an appointment. \\
+Script:
+\begin{enumerate}
+\item System will check where the conflict happened. Either it happend in the room sectionorit happened in the select primary users section.
+\item System will color the conflicted section red.
+\item User will have to resolve the conflict be either choosing a new room or change some people from the meeting.
+\item System restores the original colors of the window if no conflict is detected.
+\end{enumerate}
+
+\subsection{Task scenario: create appointment on his/her own screen}
+
+
+Type: typical \\
+Situation: the user whishes to create an appointment. \\
+Script:
+\begin{enumerate}
+\item User presses the show agenda button as in task scenario \ref{subsec:agenda}.
+\item User selects the month and day of when he wants an appointment as in task scenario \ref{subsec:day}.
+\item User can now choose the exact starting hour of the appointment as in task scenario \ref{subsec:hour}.
+\item System will redirect user to another page showing the starting hour and end hour in scrollable lists.
+\item User chooses the end time and can change the start time if he/she wishes to.
+\item User can add other primary users to the appointment and select a room for the meeting.
+\item System checks for conflicts and will take the appropriate actions as explained in \ref{subsec:conflictPrimary}
+\item User clicks on the button to make an appointment.
+\item System redirects user to the confirmation screen.
+\end{enumerate}
+
+
+\subsection{Task scenario: create a break}
+
+
+Type: typical \\
+Situation: the user whishes to take a break. \\
+Script:
+\begin{enumerate}
+\item User presses the show agenda button as in task scenario \ref{subsec:agenda}.
+\item User selects the month and day of when he wants an appointment as in task scenario \ref{subsec:day}.
+\item User can now choose the exact starting hour of the appointment as in task scenario \ref{subsec:hour}.
+\item System will redirect user to another page showing the starting hour and end hour in scrollable lists.
+\item User has to select the break tab of the window.
+\item System will display the content of the new tab.
+\item User chooses the type of break and the time he/she is going to take a break.
+\item User clicks on the button to create a break.
+\item System redirects user to the begin page and automatically logs the user out.
+\end{enumerate}
+
+
+\section{Task scenario: big WISE screen}
+
+
+\subsection{Task scenario: searching for the primary user using the availability list}
+
+
+\label{subsec:availability}Type: typical \\
+Situation: the user whishes to find a primary user using his status. \\
+Script:
+\begin{enumerate}
+\item User presses the availability tab.
+\item System updates the screen to the new availability information which is displayed as a list of users.
+\end{enumerate}
+
+
+
+\subsection{Task scenario: searching for the primary user using the rank list}
+
+
+\label{subsec:rank}Type: typical \\
+Situation: the user whishes to find a primary user using his rank. \\
+Script:
+\begin{enumerate}
+\item User presses the rank tab.
+\item System updates the screen to the new rank information which is displayed as a list of users.
+\end{enumerate}
+
+
+\subsection{Task scenario: searching for the primary user in an alphabetical sorted list}
+
+
+\label{subsec:alphabetic}Type: typical \\
+Situation: the user whishes to find a primary user alphabetically. \\
+Script:
+\begin{enumerate}
+\item User presses the alphabetic tab.
+\item System updates the screen to the new alphabetical sorted information which is displayed as a list of users.
+\end{enumerate}
+
+
+\subsection{Task scenario: selecting a primary user in the alphabetical sorted list}
+
+
+\label{subsec:alphabeticSelect}Type: typical \\
+Situation: the user whishes to find a primary user alphabetically. \\
+Script:
+\begin{enumerate}
+\item User selects the alphabetic tab as explained in \ref{subsec:alphabetic}
+\item System show to lists: one single letter list (the whole alphabet) and a list of names alphabetically sorted.
+\item User selects the letter of the name hewants to find and can scroll through the letters if needed.
+\item System refreshes the name list with names starting with the selected letter.
+\item User can now select the primary user he/she was looking for by clicking on it.
+\end{enumerate}
+
+
+\subsection{Task scenario: selecting a primary user in the rank list}
+
+
+\label{subsec:rankSelect}Type: typical \\
+Situation: the user whishes to find a primary user using the ranks of the users. \\
+Script:
+\begin{enumerate}
+\item User selects the rank tab as explained in \ref{subsec:rank}
+\item System show three lists: one list representing the professors, one representing the assistants and the last one represents guests (interns and others).
+\item User can now select the primary user he/she was looking for by clicking on it.
+\end{enumerate}
+
+
+\subsection{Task scenario: selecting a primary user in the availability list}
+
+
+\label{subsec:availabilitySelect}Type: typical \\
+Situation: the user whishes to find a primary user using the availability list. \\
+Script:
+\begin{enumerate}
+\item User selects the availability tab as explained in \ref{subsec:availability}
+\item System show two lists: one list representing the primary users who are available and the other list represents the unavailable primary users.
+\item User can now select the primary user he/she was looking for by clicking on it.
+\end{enumerate}
+
+
+\subsection{Task scenario: creating an appointment using the big WISE screen}
+
+
+Type: typical \\
+Situation: the user whishes to create an appointment using the big WISE screen. \\
+Script:
+\begin{enumerate}
+\item User selects the primary user he's interested in as explained in \ref{subsec:availabilitySelect} \ref{subsec:rankSelect} \ref{subsec:alphabeticSelect}
+\item System updates the screen and will ask the user to log in.
+\item User can now see the aganda and calendar of the selected user and can create an appointment as explained in \ref{subsec:appointment}
+\end{enumerate}
+
+%\begin{figure}[H]
+%\centering
+ %   \includegraphics[width=0.45\textwidth]{scale.jpg}
+%  \caption{To demonstrate the fact that our website is viewable on a mobile device's browser, we made the window very small. One can see that the table is resized, as well as the warning %and error messages.}
+%\end{figure}
+
+\end{document}
