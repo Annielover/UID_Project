@@ -427,7 +427,7 @@ This will be used by the WISE members / students of the VUB. We can thus assume 
 
 \section{Task scenario's: secondary users}
 
-\subsection{Task scenario: login using username and password}
+\subsection{\label{subsec:loginPass}Task scenario: login using username and password}
 
 Type: typical \\
 Situation: the user whishes to login using his/her username and password. \\
@@ -443,9 +443,9 @@ Script:
 \item \textbf{Correct:} system redirects the user to the  confirmation screen.
 \end{itemize}
 \end{enumerate}
-CTT for this task see figure %\ref{}
+CTT for this task see figure \ref{fig:Login}.
 
-\subsection{Task scenario: login using a fingerprint}
+\subsection{\label{subsec:loginFinger}Task scenario: login using a fingerprint}
 
 Type: typical \\
 Situation: the user whishes to login using his/her username and password. \\
@@ -461,9 +461,9 @@ Script:
 \item \textbf{Correct:} system redirects the user to the  confirmation screen.
 \end{itemize}
 \end{enumerate}
-CTT for this task see figure %\ref{}
+CTT for this task see figure \ref{fig:Login}.
 
-\subsection{Task scenario: login using QR code}
+\subsection{\label{subsec:loginNFC}Task scenario: login using QR code}
 
 Type: typical \\
 Situation: the user whishes to login by scanning a QR code \\
@@ -479,9 +479,9 @@ Script:
 \item \textbf{Correct:} system redirects the user to the confirmation screen.
 \end{itemize}
 \end{enumerate}
-CTT for this task see figure %\ref{}
+CTT for this task see figure \ref{fig:Login}.
 
-\subsection{Task scenario: login using speech}
+\subsection{\label{subsec:loginSpeech}Task scenario: login using speech}
 
 Type: typical \\
 Situation: the user whishes to login using voice authentication (speech). \\
@@ -497,7 +497,13 @@ Script:
 \item \textbf{Correct:} system outputs an informational sound and redirects the user to the  confirmation screen.
 \end{itemize}
 \end{enumerate}
-CTT for this task see figure %\ref{}
+CTT for this task see figure \ref{fig:Login}.
+
+\begin{figure}[H]
+\centering
+    \includegraphics[width=1.4\textwidth, angle=90]{Login.jpg}
+  \caption[Login CTT]{\label{fig:Login}Complete login CTT overview}
+\end{figure}
 
 
 \subsection{Task scenario: logout}
@@ -514,19 +520,30 @@ Script:
 \end{itemize}
 \end{enumerate}
 
+\begin{figure}[H]
+\centering
+    \includegraphics[width=0.8\textwidth]{Logout.jpg}
+  \caption[Logout CTT]{\label{fig:Logout}Logout CTT}
+\end{figure}
+
 
 \subsection{Task scenario: show agenda of primary user}
 
 \label{subsec:agenda}Type: typical \\
-Situation: the user whishes to view  the agenda and planing of the primary user. \\
+Situation: the user whishes to view  the agenda and planning of the primary user. \\
 Script:
 \begin{enumerate}
 \item User pushes the show agenda button.
 \item System displays the four possible login methods.
-\item User logs in as explained in task scenarios% 1-4.
+\item User logs in as explained in task scenarios \ref{subsec:loginPass}, \ref{subsec:loginFinger}, \ref{subsec:loginSpeech} and \ref{subsec:loginNFC}.
 \item System redirects user to the agenda and planning of the primary user.
 \end{enumerate}
 
+\begin{figure}[H]
+\centering
+    \includegraphics[width=1\textwidth]{ShowAgenda.jpg}
+  \caption[Display agenda CTT]{\label{fig:ShowAgenda}CTT to display the user's agenda.}
+\end{figure}
 
 \subsection{Task scenario: select a day}
 
@@ -584,9 +601,13 @@ Script:
 \item System redirects user to the confirmation screen.
 \end{enumerate}
 
+\begin{figure}[H]
+\centering
+    \includegraphics[width=0.9\textwidth]{CreateAppointment.jpg}
+  \caption[Create appointment CTT]{\label{fig:CreateAppointment}CTT to create an appointment}
+\end{figure}
 
 \subsection{Task scenario: confirmation screen}
-
 
 Type: typical \\
 Situation: the user whishes to make an appointment. \\
@@ -605,7 +626,6 @@ Script:
 
 \subsection{Task scenario: cancel an appointment}
 
-
 Type: typical \\
 Situation: the user whishes to cancel an appointment. \\
 Script:
@@ -622,6 +642,13 @@ Script:
 \item \textbf{Cancel:} system redirects the user to the agenda page of the primary user.
 \end{itemize}
 \end{enumerate}
+
+\begin{figure}[H]
+\centering
+    \includegraphics[width=0.6\textwidth]{CancelAppointment.jpg}
+  \caption[Cancel appointment CTT]{\label{fig:CancelAppointment}CTT to cancel an appointment}
+\end{figure}
+
 
 \section{Task scenario: primary users}
 A primary user has all the same functionalities as the secondary users. They have a few more privileges that we will explain in this section.
@@ -771,10 +798,10 @@ Script:
 \item User can now see the aganda and calendar of the selected user and can create an appointment as explained in \ref{subsec:appointment}
 \end{enumerate}
 
-%\begin{figure}[H]
-%\centering
- %   \includegraphics[width=0.45\textwidth]{scale.jpg}
-%  \caption{To demonstrate the fact that our website is viewable on a mobile device's browser, we made the window very small. One can see that the table is resized, as well as the warning %and error messages.}
-%\end{figure}
+\begin{figure}[H]
+\centering
+    \includegraphics[width=1\textwidth]{Redirect.jpg}
+  \caption[Redirect CTT]{\label{fig:CreateAppointment}CTT to redirect the user to the begin screen}
+\end{figure}
 
 \end{document}
