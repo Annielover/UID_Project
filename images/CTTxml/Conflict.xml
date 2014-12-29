@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TaskModel xmlns="http://giove.isti.cnr.it/ctt" xmlns:coop="http://giove.isti.cnr.it/cttcoop" NameTaskModelID="Check_Conflicts">
+    <Task Identifier="Check_Conflicts" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+        <Name>name</Name>
+        <SubTask>
+            <Task Identifier="Conflict" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                <Name>name</Name>
+                <TemporalOperator name="Choice"/>
+                <Parent name="Check_Conflicts"/>
+                <SiblingRight name="No_Conflict"/>
+                <SubTask>
+                    <Task Identifier="Color_Window" Category="application" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                        <Name>name</Name>
+                        <TemporalOperator name="Interleaving"/>
+                        <Parent name="Conflict"/>
+                        <SiblingRight name="Disable_Appointment_Button"/>
+                    </Task>
+                    <Task Identifier="Disable_Appointment_Button" Category="application" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                        <Name>name</Name>
+                        <Parent name="Conflict"/>
+                        <SiblingLeft name="Color_Window"/>
+                    </Task>
+                </SubTask>
+            </Task>
+            <Task Identifier="No_Conflict" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                <Name>name</Name>
+                <Parent name="Check_Conflicts"/>
+                <SiblingLeft name="Conflict"/>
+                <SubTask>
+                    <Task Identifier="Restore_Window_Color" Category="application" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                        <Name>name</Name>
+                        <TemporalOperator name="Interleaving"/>
+                        <Parent name="No_Conflict"/>
+                        <SiblingRight name="Restore_Appointment_Button"/>
+                    </Task>
+                    <Task Identifier="Restore_Appointment_Button" Category="application" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                        <Name>name</Name>
+                        <Parent name="No_Conflict"/>
+                        <SiblingLeft name="Restore_Window_Color"/>
+                    </Task>
+                </SubTask>
+            </Task>
+        </SubTask>
+    </Task>
+</TaskModel>

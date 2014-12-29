@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TaskModel xmlns="http://giove.isti.cnr.it/ctt" xmlns:coop="http://giove.isti.cnr.it/cttcoop" NameTaskModelID="Search_User">
+    <Task Identifier="Search_User" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+        <Name>name</Name>
+        <SubTask>
+            <Task Identifier="Insert_User_Name" Category="interaction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                <Name>name</Name>
+                <TemporalOperator name="SequentialEnablingInfo"/>
+                <Parent name="Search_User"/>
+                <SiblingRight name="Show_Match"/>
+            </Task>
+            <Task Identifier="Show_Match" Category="application" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                <Name>name</Name>
+                <TemporalOperator name="SequentialEnabling"/>
+                <Parent name="Search_User"/>
+                <SiblingLeft name="Insert_User_Name"/>
+                <SiblingRight name="Select_User"/>
+            </Task>
+            <Task Identifier="Select_User" Category="interaction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                <Name>name</Name>
+                <TemporalOperator name="SequentialEnablingInfo"/>
+                <Parent name="Search_User"/>
+                <SiblingLeft name="Show_Match"/>
+                <SiblingRight name="Update_Table"/>
+            </Task>
+            <Task Identifier="Update_Table" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                <Name>name</Name>
+                <TemporalOperator name="SequentialEnablingInfo"/>
+                <Parent name="Search_User"/>
+                <SiblingLeft name="Select_User"/>
+                <SiblingRight name="Show_Agenda"/>
+                <SubTask>
+                    <Task Identifier="Update_Availability_Info" Category="application" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                        <Name>name</Name>
+                        <TemporalOperator name="Parallel"/>
+                        <Parent name="Update_Table"/>
+                        <SiblingRight name="Update_Room_Info"/>
+                    </Task>
+                    <Task Identifier="Update_Room_Info" Category="application" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                        <Name>name</Name>
+                        <Parent name="Update_Table"/>
+                        <SiblingLeft name="Update_Availability_Info"/>
+                    </Task>
+                </SubTask>
+            </Task>
+            <Task Identifier="Show_Agenda" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                <Name>name</Name>
+                <Parent name="Search_User"/>
+                <SiblingLeft name="Update_Table"/>
+            </Task>
+        </SubTask>
+    </Task>
+</TaskModel>

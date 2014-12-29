@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TaskModel xmlns="http://giove.isti.cnr.it/ctt" xmlns:coop="http://giove.isti.cnr.it/cttcoop" NameTaskModelID="Create_Primary_Appointment">
+    <Task Identifier="Create_Primary_Appointment" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+        <Name>name</Name>
+        <SubTask>
+            <Task Identifier="Create_Prim_Appointment" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                <Name>name</Name>
+                <TemporalOperator name="Choice"/>
+                <Parent name="Create_Primary_Appointment"/>
+                <SiblingRight name="Create_Break"/>
+                <SubTask>
+                    <Task Identifier="Select_Users" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                        <Name>name</Name>
+                        <TemporalOperator name="Interleaving"/>
+                        <Parent name="Create_Prim_Appointment"/>
+                        <SiblingRight name="Select_Room"/>
+                        <SubTask>
+                            <Task Identifier="Show_List_Primary_User" Category="application" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+<Name>name</Name>
+<TemporalOperator name="Synchronization"/>
+<Parent name="Select_Users"/>
+<SiblingRight name="Select_Primary_Users"/>
+                            </Task>
+                            <Task Identifier="Select_Primary_Users" Category="interaction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+<Name>name</Name>
+<Parent name="Select_Users"/>
+<SiblingLeft name="Show_List_Primary_User"/>
+                            </Task>
+                        </SubTask>
+                    </Task>
+                    <Task Identifier="Select_Room" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                        <Name>name</Name>
+                        <TemporalOperator name="Interleaving"/>
+                        <Parent name="Create_Prim_Appointment"/>
+                        <SiblingLeft name="Select_Users"/>
+                        <SiblingRight name="Select_Time"/>
+                        <SubTask>
+                            <Task Identifier="Show_List_Rooms" Category="application" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+<Name>name</Name>
+<TemporalOperator name="Synchronization"/>
+<Parent name="Select_Room"/>
+<SiblingRight name="Select_Room"/>
+                            </Task>
+                            <Task Identifier="Select_Room" Category="interaction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+<Name>name</Name>
+<Parent name="Select_Room"/>
+<SiblingLeft name="Show_List_Rooms"/>
+                            </Task>
+                        </SubTask>
+                    </Task>
+                    <Task Identifier="Select_Time" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                        <Name>name</Name>
+                        <TemporalOperator name="SequentialEnabling"/>
+                        <Parent name="Create_Prim_Appointment"/>
+                        <SiblingLeft name="Select_Room"/>
+                        <SiblingRight name="Check_Conflicts"/>
+                    </Task>
+                    <Task Identifier="Check_Conflicts" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                        <Name>name</Name>
+                        <TemporalOperator name="SequentialEnablingInfo"/>
+                        <Parent name="Create_Prim_Appointment"/>
+                        <SiblingLeft name="Select_Time"/>
+                        <SiblingRight name="Confirm"/>
+                    </Task>
+                    <Task Identifier="Confirm" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                        <Name>name</Name>
+                        <Parent name="Create_Prim_Appointment"/>
+                        <SiblingLeft name="Check_Conflicts"/>
+                    </Task>
+                </SubTask>
+            </Task>
+            <Task Identifier="Create_Break" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                <Name>name</Name>
+                <Parent name="Create_Primary_Appointment"/>
+                <SiblingLeft name="Create_Prim_Appointment"/>
+                <SubTask>
+                    <Task Identifier="Select_Break_Type" Category="interaction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                        <Name>name</Name>
+                        <TemporalOperator name="Interleaving"/>
+                        <Parent name="Create_Break"/>
+                        <SiblingRight name="Select_Time"/>
+                    </Task>
+                    <Task Identifier="Select_Time" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                        <Name>name</Name>
+                        <TemporalOperator name="SequentialEnablingInfo"/>
+                        <Parent name="Create_Break"/>
+                        <SiblingLeft name="Select_Break_Type"/>
+                        <SiblingRight name="Confirm"/>
+                    </Task>
+                    <Task Identifier="Confirm" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                        <Name>name</Name>
+                        <Parent name="Create_Break"/>
+                        <SiblingLeft name="Select_Time"/>
+                    </Task>
+                </SubTask>
+            </Task>
+        </SubTask>
+    </Task>
+</TaskModel>

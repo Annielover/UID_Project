@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TaskModel xmlns="http://giove.isti.cnr.it/ctt" xmlns:coop="http://giove.isti.cnr.it/cttcoop" NameTaskModelID="Select_Time">
+    <Task Identifier="Select_Time" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+        <Name>name</Name>
+        <SubTask>
+            <Task Identifier="Select_Start_Time" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                <Name>name</Name>
+                <TemporalOperator name="Interleaving"/>
+                <Parent name="Select_Time"/>
+                <SiblingRight name="Select_End_Time"/>
+                <SubTask>
+                    <Task Identifier="Select_Start_Hour" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                        <Name>name</Name>
+                        <TemporalOperator name="Interleaving"/>
+                        <Parent name="Select_Start_Time"/>
+                        <SiblingRight name="Select_Start_Minute"/>
+                        <SubTask>
+                            <Task Identifier="Show_Hours" Category="application" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+<Name>name</Name>
+<TemporalOperator name="Synchronization"/>
+<Parent name="Select_Start_Hour"/>
+<SiblingRight name="Select_Hour"/>
+                            </Task>
+                            <Task Identifier="Select_Hour" Category="interaction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+<Name>name</Name>
+<Parent name="Select_Start_Hour"/>
+<SiblingLeft name="Show_Hours"/>
+                            </Task>
+                        </SubTask>
+                    </Task>
+                    <Task Identifier="Select_Start_Minute" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                        <Name>name</Name>
+                        <Parent name="Select_Start_Time"/>
+                        <SiblingLeft name="Select_Start_Hour"/>
+                        <SubTask>
+                            <Task Identifier="Show_Minutes" Category="application" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+<Name>name</Name>
+<TemporalOperator name="Synchronization"/>
+<Parent name="Select_Start_Minute"/>
+<SiblingRight name="Select_Minute"/>
+                            </Task>
+                            <Task Identifier="Select_Minute" Category="interaction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+<Name>name</Name>
+<Parent name="Select_Start_Minute"/>
+<SiblingLeft name="Show_Minutes"/>
+                            </Task>
+                        </SubTask>
+                    </Task>
+                </SubTask>
+            </Task>
+            <Task Identifier="Select_End_Time" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                <Name>name</Name>
+                <Parent name="Select_Time"/>
+                <SiblingLeft name="Select_Start_Time"/>
+                <SubTask>
+                    <Task Identifier="Select_End_Hour" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                        <Name>name</Name>
+                        <TemporalOperator name="Interleaving"/>
+                        <Parent name="Select_End_Time"/>
+                        <SiblingRight name="Select_End_Minute"/>
+                        <SubTask>
+                            <Task Identifier="Show_Hours" Category="application" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+<Name>name</Name>
+<TemporalOperator name="Synchronization"/>
+<Parent name="Select_End_Hour"/>
+<SiblingRight name="Select_Hour"/>
+                            </Task>
+                            <Task Identifier="Select_Hour" Category="interaction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+<Name>name</Name>
+<Parent name="Select_End_Hour"/>
+<SiblingLeft name="Show_Hours"/>
+                            </Task>
+                        </SubTask>
+                    </Task>
+                    <Task Identifier="Select_End_Minute" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                        <Name>name</Name>
+                        <Parent name="Select_End_Time"/>
+                        <SiblingLeft name="Select_End_Hour"/>
+                        <SubTask>
+                            <Task Identifier="Show_Minutes" Category="application" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+<Name>name</Name>
+<TemporalOperator name="Synchronization"/>
+<Parent name="Select_End_Minute"/>
+<SiblingRight name="Select_Minute"/>
+                            </Task>
+                            <Task Identifier="Select_Minute" Category="interaction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+<Name>name</Name>
+<Parent name="Select_End_Minute"/>
+<SiblingLeft name="Show_Minutes"/>
+                            </Task>
+                        </SubTask>
+                    </Task>
+                </SubTask>
+            </Task>
+        </SubTask>
+    </Task>
+</TaskModel>

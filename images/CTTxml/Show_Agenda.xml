@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TaskModel xmlns="http://giove.isti.cnr.it/ctt" xmlns:coop="http://giove.isti.cnr.it/cttcoop" NameTaskModelID="Show_Agenda">
+    <Task Identifier="Show_Agenda" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+        <Name>name</Name>
+        <SubTask>
+            <Task Identifier="Press_Show_Agenda" Category="interaction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                <Name>name</Name>
+                <TemporalOperator name="SequentialEnabling"/>
+                <Parent name="Show_Agenda"/>
+                <SiblingRight name="Login"/>
+            </Task>
+            <Task Identifier="Login" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                <Name>name</Name>
+                <TemporalOperator name="SequentialEnablingInfo"/>
+                <Parent name="Show_Agenda"/>
+                <SiblingLeft name="Press_Show_Agenda"/>
+                <SiblingRight name="Agenda"/>
+            </Task>
+            <Task Identifier="Agenda" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                <Name>name</Name>
+                <Parent name="Show_Agenda"/>
+                <SiblingLeft name="Login"/>
+                <SubTask>
+                    <Task Identifier="Show_Calendar" Category="application" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                        <Name>name</Name>
+                        <TemporalOperator name="SequentialEnablingInfo"/>
+                        <Parent name="Agenda"/>
+                        <SiblingRight name="Update_Day"/>
+                    </Task>
+                    <Task Identifier="Update_Day" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                        <Name>name</Name>
+                        <TemporalOperator name="SequentialEnablingInfo"/>
+                        <Parent name="Agenda"/>
+                        <SiblingLeft name="Show_Calendar"/>
+                        <SiblingRight name="Update_Hour"/>
+                        <SubTask>
+                            <Task Identifier="Select_Day" Category="interaction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+<Name>name</Name>
+<TemporalOperator name="SequentialEnablingInfo"/>
+<Parent name="Update_Day"/>
+<SiblingRight name="Update_Hour_Detail"/>
+                            </Task>
+                            <Task Identifier="Update_Hour_Detail" Category="application" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+<Name>name</Name>
+<Parent name="Update_Day"/>
+<SiblingLeft name="Select_Day"/>
+                            </Task>
+                        </SubTask>
+                    </Task>
+                    <Task Identifier="Update_Hour" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                        <Name>name</Name>
+                        <Parent name="Agenda"/>
+                        <SiblingLeft name="Update_Day"/>
+                        <SubTask>
+                            <Task Identifier="Select_Hour" Category="interaction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+<Name>name</Name>
+<TemporalOperator name="SequentialEnablingInfo"/>
+<Parent name="Update_Hour"/>
+<SiblingRight name="Update_Minute_Detail"/>
+                            </Task>
+                            <Task Identifier="Update_Minute_Detail" Category="application" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+<Name>name</Name>
+<TemporalOperator name="SequentialEnablingInfo"/>
+<Parent name="Update_Hour"/>
+<SiblingLeft name="Select_Hour"/>
+<SiblingRight name="Create_Appointment"/>
+                            </Task>
+                            <Task Identifier="Create_Appointment" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+<Name>name</Name>
+<TemporalOperator name="Choice"/>
+<Parent name="Update_Hour"/>
+<SiblingLeft name="Update_Minute_Detail"/>
+<SiblingRight name="Cancel_Appointment"/>
+                            </Task>
+                            <Task Identifier="Cancel_Appointment" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+<Name>name</Name>
+<Parent name="Update_Hour"/>
+<SiblingLeft name="Create_Appointment"/>
+                            </Task>
+                        </SubTask>
+                    </Task>
+                </SubTask>
+            </Task>
+        </SubTask>
+    </Task>
+</TaskModel>

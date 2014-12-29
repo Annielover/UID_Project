@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<interface xmlns="http://giove.isti.cnr.it" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns3="http://schemas.xmlsoap.org/wsdl/" xmlns:ns4="uri:xs" type="cui_desktop" schema-version="1.5.4">
+    <external_functions/>
+    <data>
+        <xs:schema finalDefault="" blockDefault="" elementFormDefault="unqualified" attributeFormDefault="unqualified"/>
+    </data>
+    <presentation name="Logout_presentation">
+        <connections/>
+        <grouping role="none" hierarchy="false" ordering="false" continuous_update="false" id="P1_Logout" hidden="false">
+            <grouping role="none" hierarchy="false" ordering="false" continuous_update="false" id="Logout_presentation_header" hidden="false">
+                <properties fieldset="false" bullet="false" position="column">
+                    <label label_position="left">
+                        <text role="heading1" margin-top="0px" margin-bottom="0px" margin-left="0px;" margin-right="0px;" border-color="#000000" border="2px" border-style="solid">
+                            <string>Logout presentation</string>
+                            <font_settings name="arial" color="#FFFFFF" size="28pt" align="center" mark="false"/>
+                        </text>
+                    </label>
+                    <background>
+                        <background_color>#32639A</background_color>
+                    </background>
+                </properties>
+            </grouping>
+            <grouping role="none" hierarchy="false" ordering="false" continuous_update="false" id="Logout_presentation_header_breadcrumb" hidden="false">
+                <properties fieldset="false" bullet="false" position="row"/>
+            </grouping>
+            <text_edit id="P1_Logout" enabled="true" focus="false" hidden="false" continuous_update="false">
+                <text_field length="20" password="false" role="none" border-color="#000000" border="1px" border-style="solid" width="400px">
+                    <label label_position="left">
+                        <text width="300px">
+                            <string>P1 Logout</string>
+                            <font_settings name="arial" color="#787878" size="13pt" align="left" weight="bold" mark="false"/>
+                        </text>
+                    </label>
+                </text_field>
+            </text_edit>
+            <properties fieldset="true" bullet="false" position="column"/>
+        </grouping>
+        <presentation_settings>
+            <title>Logout_presentation</title>
+            <background>
+                <background_color></background_color>
+                <background_image></background_image>
+            </background>
+            <font_settings mark="false"/>
+        </presentation_settings>
+    </presentation>
+</interface>

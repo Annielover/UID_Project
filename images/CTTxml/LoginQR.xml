@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TaskModel xmlns="http://giove.isti.cnr.it/ctt" xmlns:coop="http://giove.isti.cnr.it/cttcoop" NameTaskModelID="Login_QR_Code">
+    <Task Identifier="Login_QR_Code" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+        <Name>name</Name>
+        <SubTask>
+            <Task Identifier="Read_QR_Code" Category="interaction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                <Name>name</Name>
+                <TemporalOperator name="SequentialEnablingInfo"/>
+                <Parent name="Login_QR_Code"/>
+                <SiblingRight name="Process_Authentication"/>
+            </Task>
+            <Task Identifier="Process_Authentication" Category="application" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                <Name>name</Name>
+                <TemporalOperator name="SequentialEnablingInfo"/>
+                <Parent name="Login_QR_Code"/>
+                <SiblingLeft name="Read_QR_Code"/>
+                <SiblingRight name="Redirect"/>
+            </Task>
+            <Task Identifier="Redirect" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                <Name>name</Name>
+                <Parent name="Login_QR_Code"/>
+                <SiblingLeft name="Process_Authentication"/>
+            </Task>
+        </SubTask>
+    </Task>
+</TaskModel>

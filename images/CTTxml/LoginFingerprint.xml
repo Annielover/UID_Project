@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TaskModel xmlns="http://giove.isti.cnr.it/ctt" xmlns:coop="http://giove.isti.cnr.it/cttcoop" NameTaskModelID="Logine_Fingerprint">
+    <Task Identifier="Logine_Fingerprint" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+        <Name>name</Name>
+        <SubTask>
+            <Task Identifier="Fingerprint" Category="interaction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                <Name>name</Name>
+                <TemporalOperator name="SequentialEnablingInfo"/>
+                <Parent name="Logine_Fingerprint"/>
+                <SiblingRight name="Process_Authentication"/>
+            </Task>
+            <Task Identifier="Process_Authentication" Category="application" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                <Name>name</Name>
+                <TemporalOperator name="SequentialEnablingInfo"/>
+                <Parent name="Logine_Fingerprint"/>
+                <SiblingLeft name="Fingerprint"/>
+                <SiblingRight name="Redirect"/>
+            </Task>
+            <Task Identifier="Redirect" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                <Name>name</Name>
+                <Parent name="Logine_Fingerprint"/>
+                <SiblingLeft name="Process_Authentication"/>
+            </Task>
+        </SubTask>
+    </Task>
+</TaskModel>

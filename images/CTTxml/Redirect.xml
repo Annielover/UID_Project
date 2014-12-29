@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TaskModel xmlns="http://giove.isti.cnr.it/ctt" xmlns:coop="http://giove.isti.cnr.it/cttcoop" NameTaskModelID="Redirect">
+    <Task Identifier="Redirect" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+        <Name>name</Name>
+        <SubTask>
+            <Task Identifier="Redirect_Login" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                <Name>name</Name>
+                <TemporalOperator name="Choice"/>
+                <Parent name="Redirect"/>
+                <SiblingRight name="redirect_Logout"/>
+                <SubTask>
+                    <Task Identifier="Login_Succesful" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                        <Name>name</Name>
+                        <TemporalOperator name="Choice"/>
+                        <Parent name="Redirect_Login"/>
+                        <SiblingRight name="Login_Unsuccesful"/>
+                        <SubTask>
+                            <Task Identifier="Redirect_Agenda" Category="application" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+<Name>name</Name>
+<Parent name="Login_Succesful"/>
+                            </Task>
+                        </SubTask>
+                    </Task>
+                    <Task Identifier="Login_Unsuccesful" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                        <Name>name</Name>
+                        <Parent name="Redirect_Login"/>
+                        <SiblingLeft name="Login_Succesful"/>
+                        <SubTask>
+                            <Task Identifier="Redirect_Main" Category="application" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+<Name>name</Name>
+<Parent name="Login_Unsuccesful"/>
+                            </Task>
+                        </SubTask>
+                    </Task>
+                </SubTask>
+            </Task>
+            <Task Identifier="redirect_Logout" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                <Name>name</Name>
+                <TemporalOperator name="Choice"/>
+                <Parent name="Redirect"/>
+                <SiblingLeft name="Redirect_Login"/>
+                <SiblingRight name="Redirect_Confirm"/>
+                <SubTask>
+                    <Task Identifier="Logout_Succesful" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                        <Name>name</Name>
+                        <TemporalOperator name="Choice"/>
+                        <Parent name="redirect_Logout"/>
+                        <SiblingRight name="Logout_Unsuccesful"/>
+                        <SubTask>
+                            <Task Identifier="Redirect_Main" Category="application" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+<Name>name</Name>
+<Parent name="Logout_Succesful"/>
+                            </Task>
+                        </SubTask>
+                    </Task>
+                    <Task Identifier="Logout_Unsuccesful" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                        <Name>name</Name>
+                        <Parent name="redirect_Logout"/>
+                        <SiblingLeft name="Logout_Succesful"/>
+                        <SubTask>
+                            <Task Identifier="Redirect_Agenda" Category="application" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+<Name>name</Name>
+<Parent name="Logout_Unsuccesful"/>
+                            </Task>
+                        </SubTask>
+                    </Task>
+                </SubTask>
+            </Task>
+            <Task Identifier="Redirect_Confirm" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                <Name>name</Name>
+                <TemporalOperator name="Choice"/>
+                <Parent name="Redirect"/>
+                <SiblingLeft name="redirect_Logout"/>
+                <SiblingRight name="Redirect_Delete_Appointment"/>
+                <SubTask>
+                    <Task Identifier="Confirm" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                        <Name>name</Name>
+                        <TemporalOperator name="Choice"/>
+                        <Parent name="Redirect_Confirm"/>
+                        <SiblingRight name="Cancel"/>
+                        <SubTask>
+                            <Task Identifier="Confirm" Category="interaction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+<Name>name</Name>
+<TemporalOperator name="SequentialEnablingInfo"/>
+<Parent name="Confirm"/>
+<SiblingRight name="Redirect_Main"/>
+                            </Task>
+                            <Task Identifier="Redirect_Main" Category="application" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+<Name>name</Name>
+<Parent name="Confirm"/>
+<SiblingLeft name="Confirm"/>
+                            </Task>
+                        </SubTask>
+                    </Task>
+                    <Task Identifier="Cancel" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                        <Name>name</Name>
+                        <Parent name="Redirect_Confirm"/>
+                        <SiblingLeft name="Confirm"/>
+                        <SubTask>
+                            <Task Identifier="Cancel" Category="interaction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+<Name>name</Name>
+<TemporalOperator name="SequentialEnablingInfo"/>
+<Parent name="Cancel"/>
+<SiblingRight name="Redirect_Agenda"/>
+                            </Task>
+                            <Task Identifier="Redirect_Agenda" Category="application" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+<Name>name</Name>
+<Parent name="Cancel"/>
+<SiblingLeft name="Cancel"/>
+                            </Task>
+                        </SubTask>
+                    </Task>
+                </SubTask>
+            </Task>
+            <Task Identifier="Redirect_Delete_Appointment" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                <Name>name</Name>
+                <Parent name="Redirect"/>
+                <SiblingLeft name="Redirect_Confirm"/>
+                <SubTask>
+                    <Task Identifier="Delete_Confirmation" Category="application" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                        <Name>name</Name>
+                        <TemporalOperator name="SequentialEnablingInfo"/>
+                        <Parent name="Redirect_Delete_Appointment"/>
+                        <SiblingRight name="Redirect*"/>
+                    </Task>
+                    <Task Identifier="Redirect*" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                        <Name>name</Name>
+                        <Parent name="Redirect_Delete_Appointment"/>
+                        <SiblingLeft name="Delete_Confirmation"/>
+                    </Task>
+                </SubTask>
+            </Task>
+        </SubTask>
+    </Task>
+</TaskModel>

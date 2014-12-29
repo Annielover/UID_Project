@@ -5,6 +5,9 @@
 \usepackage{float}
 \usepackage{mathtools}
 
+\setcounter{secnumdepth}{5}   
+\setcounter{tocdepth}{5}   
+
 \usepackage[toc,page]{appendix}
 
 \usepackage{hyperref}
@@ -481,7 +484,7 @@ Script:
 \item (Authentication takes place in the smartphone.)
 \begin{itemize}
 \item \textbf{Wrong:} system receives the error that the user is not authenticated and thus, the system shows a feedback message that the user is not authorized to the system, thus not authorized to make an appointment.
-\item \textbf{Correct:} system redirects the user to the confirmation screen.
+\item \textbf{Correct:} system redirects the user to the ageinda.
 \end{itemize}
 \end{enumerate}
 
@@ -780,7 +783,7 @@ Type: typical \\
 Situation: the user whishes to create an appointment using the big WISE screen. \\
 Script:
 \begin{enumerate}
-\item User selects the primary user he's interested in as explained in \ref{subsec:availabilitySelect} \ref{subsec:rankSelect} \ref{subsec:alphabeticSelect}
+\item User selects the primary user he's interested in.
 \item System updates the screen and will ask the user to log in.
 \item User can now see the aganda and calendar of the selected user and can create an appointment as explained in \ref{subsec:appointment}
 \end{enumerate}
@@ -1072,37 +1075,15 @@ This concludes the style guide.
 
 \chapter{Design}
 
-We will apply the task-driven design technique on each of the CTT's. The MARIAE tool has been used to create the enable task sets of each of the CTT's. For informational purposes, the task description with the CTT will be given as well.
-
-\section{logging out}
-
-\subsection{Task description and CTT}
-
-Type: exceptional \\
-Situation: the user whishes to logout. \\
-Script:
-\begin{enumerate}
-\item User presses the logout button.
-\item System shows a confirmation screen.
-\begin{itemize}
-\item \textbf{Confirm:} system redirects user to the begin screen and the user will be logged out.
-\item \textbf{Cancel:} system redirects the user to the agenda page of the primary user.
-\end{itemize}
-\end{enumerate}
-
-\begin{figure}[H]
-\centering
-    \includegraphics[width=0.6\textwidth]{Logout.jpg}
-  \caption[Logout CTT]{\label{fig:Logout}Logout CTT}
-\end{figure}
-
-\subsection{Enabled task set}
-
-\{Logout,Process\_Logout,Redirect\}
+We will apply the task-driven design technique on each of the CTT's. The MARIAE tool has been used to create the enable task sets of each of the CTT's. For informational purposes, the task description with the CTT will be given as well. On top of that, some design mockups are also supplied. Note however that these are just mockups, not the final (prototype) design. We provided them just to give the reader a general impression of how the final design could look like.
 
 \section{\label{subsec:loginPass}Login using username and password}
 
+As previously mentioned, four ways to login exist. The user can choose between logging in using his VUB netID in combination with his VUB password, or he can opt to use his fingerprint to login. But it is also possible to login by speaking to the device or using a QR code. We will describe them all four seperately using CTT's. Thus, for each login method, a CTT is provided in combination with the task sets.
+
 \subsection{Task description and CTT}
+
+When a user wants to login using his VUB netID and VUB password, he chooses the appropriate login method listed by the system, after which a new window pops up with two textfields. One to enter the username and one to enter the password. When the user taps on one textfield, a virtual keyboard is shown to input the desired text. After the username en password have been provided, the system validates the credentials and the user receives either an error message, or in case everything went well, he is redirected to the agenda.
 
 Type: typical \\
 Situation: the user whishes to login using his/her username and password. \\
@@ -1115,7 +1096,7 @@ Script:
 \item System validates the login.
 \begin{itemize}
 \item \textbf{Wrong:} system shows a feedback message that the user is not authorized to the system, thus not authorized to make an appointment.
-\item \textbf{Correct:} system redirects the user to the  confirmation screen.
+\item \textbf{Correct:} system redirects the user to the agenda.
 \end{itemize}
 \end{enumerate}
 
@@ -1143,6 +1124,8 @@ Script:
 
 \section{\label{subsec:loginFinger}Login using a fingerprint}
 
+When a user wants to login using his fingerprint, he chooses the appropriate login method listed by the system, after which a new window pops up with a circle. After his fingerprint is taken, the system validates the credentials and the user receives either an error message, or in case everything went well, he is redirected to the agenda. This is described formally below:
+
 \subsection{Task description and CTT}
 
 Type: typical \\
@@ -1156,7 +1139,7 @@ Script:
 \item System validates the fingerprint.
 \begin{itemize}
 \item \textbf{Wrong:} system shows a feedback message that the user is not authorized to the system, thus not authorized to make an appointment.
-\item \textbf{Correct:} system redirects the user to the  confirmation screen.
+\item \textbf{Correct:} system redirects the user to the agenda.
 \end{itemize}
 \end{enumerate}
 
@@ -1178,6 +1161,8 @@ Script:
 
 \subsection{Task description and CTT}
 
+When a user wants to login by means of a QR code, he chooses the appropriate login method listed by the system, after which a new window pops up with a QR code. The user scans this code with his smartphone, after which authentication takes place on the smartphone and the user receives either an error message, or in case everything went well, he is redirected to the agenda. This is described formally below:
+
 Type: typical \\
 Situation: the user whishes to login by scanning a QR code \\
 Script:
@@ -1189,7 +1174,7 @@ Script:
 \item (Authentication takes place in the smartphone.)
 \begin{itemize}
 \item \textbf{Wrong:} system receives the error that the user is not authenticated and thus, the system shows a feedback message that the user is not authorized to the system, thus not authorized to make an appointment.
-\item \textbf{Correct:} system redirects the user to the confirmation screen.
+\item \textbf{Correct:} system redirects the user to the agenda.
 \end{itemize}
 \end{enumerate}
 
@@ -1211,6 +1196,8 @@ Script:
 
 \subsection{Task description and CTT}
 
+If the user opts to login using voice / speech, he can do so by clicking the appropriate icon. Afterwards, the system outputs a spoken message indicating that the user is allowed to talk, that is, to authenticate himself using voice. When this is done, the system processes the voice, validates the user and in case of success, he is redirected to the agenda of the primary user.
+
 Type: typical \\
 Situation: the user whishes to login using voice authentication (speech). \\
 Script:
@@ -1222,7 +1209,7 @@ Script:
 \item System validates the user's voice input.
 \begin{itemize}
 \item \textbf{Wrong:} system outputs an error sound.
-\item \textbf{Correct:} system outputs an informational sound and redirects the user to the  confirmation screen.
+\item \textbf{Correct:} system outputs an informational sound and redirects the user to the agenda.
 \end{itemize}
 \end{enumerate}
 
@@ -1249,10 +1236,13 @@ Script:
 
 \newpage
 
-\section{Logging out}
+\section{logging out}
 
 \subsection{Task description and CTT}
 
+Normally, a user will be logged out automatically when he makes an appointment, but of course a user can always choose to `force' this logout by pressing the logout button. This is why log out is being considered as exceptional.
+
+If the user presses the logout button, the system shows a confirmation screen should the user tapped this button accidentally. There exist two actions of which the user can choose: either he confirms the logout, or he declines it. In the former case, the user is redirected to the main screen, wheras in the latter case, the logout windows just disappears and the user gets to see the last window he was on. This is written more formally below:\\ \\
 Type: exceptional \\
 Situation: the user whishes to logout. \\
 Script:
@@ -1267,11 +1257,11 @@ Script:
 
 \begin{figure}[H]
 \centering
-    \includegraphics[width=0.8\textwidth]{Logout.jpg}
+    \includegraphics[width=0.7\textwidth]{Logout.jpg}
   \caption[Logout CTT]{\label{fig:Logout}Logout CTT}
 \end{figure}
 
-\subsection{Enabled task sets}
+\subsection{Enabled task set}
 
 \{Logout,Process\_Logout,Redirect\}
 
@@ -1282,6 +1272,8 @@ Script:
 \section{Show the agenda of the primary user}
 
 \subsection{Task description and CTT}
+
+When the user wants to view the agenda of the primary user (that is, the professor / assistant) from within the main screen, he can do so by tapping the appropriate button, after which he is shown a request to authenticate himself. There, the user can choose from the four possible login methods as explained above. When authenticated successfully, the user is redirected to the actual agenda of the primary user. This process is described more formally below.
 
 \label{subsec:agenda}Type: typical \\
 Situation: the user whishes to view  the agenda and planning of the primary user. \\
@@ -1316,6 +1308,8 @@ Script:
 
 %--------------------------------------------------------------------------------------------------------------
 
+\newpage
+
 \section{Conflicting appointment}
 
 \subsection{Task description and CTT}
@@ -1340,6 +1334,8 @@ Script:
 \{Color\_Window,Disable\_Appointment\_Button,Restore\_Window\_Color,Restore\_Appointment\_Button\}
 
 %------------------------------------------------------------------------------------------------------------
+
+\newpage
 
 \section{Make an appointment}
 
@@ -1379,6 +1375,8 @@ Script:
 
 %----------------------------------------------------------------------------------------------------------
 
+\newpage
+
 \section{Cancelling an appointment}
 
 \subsection{Task description and CTT}
@@ -1412,6 +1410,8 @@ Script:
 
 %------------------------------------------------------------------------------------------------
 
+\newpage
+
 \section{Conflicting appointment for the primary user}
 
 \subsection{Task description and CTT}
@@ -1437,6 +1437,8 @@ Script:
 \{Color\_Window,Disable\_Appointment\_Button,Restore\_Window\_Color,Restore\_Appointment\_Button\}
 
 %-------------------------------------------------------------------------------------------------
+
+\newpage
 
 \section{Primary user whishes to create an appointment on his own screen}
 
@@ -1469,6 +1471,8 @@ Script:
 
 %----------------------------------------------------------------------------------------
 
+\newpage
+
 \section{Task scenario: searching for the primary users on the big WISE screen}
 
 \subsection{Task description and CTT}
@@ -1495,6 +1499,7 @@ person.
 
 %---------------------------------------------------------------------------------------------------
 
+\newpage
 
 \section{Creating an appointment using the big WISE screen}
 
@@ -1504,7 +1509,7 @@ Type: typical \\
 Situation: the user whishes to create an appointment using the big WISE screen. \\
 Script:
 \begin{enumerate}
-\item User selects the primary user he's interested in as explained in \ref{subsec:availabilitySelect} \ref{subsec:rankSelect} \ref{subsec:alphabeticSelect}
+\item User selects the primary user he's interested in.
 \item System updates the screen and will ask the user to log in.
 \item User can now see the aganda and calendar of the selected user and can create an appointment as explained in \ref{subsec:appointment}
 \end{enumerate}
@@ -1520,6 +1525,8 @@ Script:
 \{Login\_Succesful,Login\_Unsuccesful,Logout\_Succesful,Logout\_Unsuccesful,Confirm, \\ Redirect\_Main,Cancel,Redirect\_Agenda,Delete\_Confirmation,Redirect*\}
 
 %------------------------------------------------------------------------------------------------------------
+
+\newpage
 
 \section{Select the time}
 
@@ -1543,5 +1550,353 @@ Script:
 
 \{Show\_Hours,Select\_Hour,Show\_Minutes,Select\_Minute\}
 
+%--------------------------------------------------------------------------------------------------------
+% PROTOTYPING
+%--------------------------------------------------------------------------------------------------------
+
+\chapter{Prototyping}
+
+In this chapter, we will describe the prototypes, based on the style guide and the design (see above chapters). Following prototypes exist: the prototype of the small display next to the door of the primary user (that is, the professor or the assistant) and the prototype of the big WISE screen, hanging in the central WISE room. \\ \\
+Note that the prototypes are divided in two groups: one for the primary users (that is, the professors and the assistants) and one for the secondary users (that is, the students). \\ \\
+All the screens of both the prototypes have been made using a tool called ``Proto.io''. This tool is particulary well-suited to design a user interface for mobile devices. Since the small screen hanging next to the professor's door, can be considered as a mobile device, this tool seemed the obvious choise.
+
+\section{Prototype of the small display}
+
+\subsection{Point of view: secondary user}
+
+\subsubsection{Main screen}
+
+When the user stands in front of the small display hanging next to the professor's door (or assistant's door), he immediately is able to see the availability status of the primary user to whom the screen belongs. Therefore, we make use of a clear label and a button. The label displays the availability status. On top of that, also the background color is consistent with the availability. It's colored in red when the user is not available or in green when the user is available, respectively.
+
+\begin{figure}[H]
+\centering
+    \includegraphics[width=0.8\textwidth]{Prototypes/MainScreen.png}
+  \caption{Prototype: main screen}
+\end{figure}
+As stated in the usability requirement, the availability status has te be clearly visible from a great distance. To meet this requirement, the label containing the availability status is made very big.
+
+%---------------------------------------------------------------------------------------------
+
+\newpage
+
+\subsubsection{Logging in}
+
+When the user wants to create an appointment with the primary user (professor / assistant of whom the screen belongs to), he can do so by clicking on ``show agenda''. The user is then redirected to another screen (actually, an another screen pops up) where he can login to the system in order to make an appointment. Logging in first is required to actually know the identity of the user. As previously mentioned, four possibilities to login exist. The user can choose between logging in using his VUB netID in combination with his VUB password, or he can opt to use his fingerprint to login. But it is also possible to login by speaking to the device or using a QR code. After the user is logged in, he  is redirected to the agenda of the primary user, where he can create an appointment.
+
+These four login possibilities are put together in one screen.
+
+\begin{figure}[H]
+\centering
+    \includegraphics[width=0.8\textwidth]{Prototypes/Login.png}
+  \caption{Prototype: login screen}
+\end{figure}
+As requested in the usability requirements, readability is very important and this is why the entire screen is divided into four regions, each containing one possible method to login. This way, the interface is kept intuitive and easy to use.
+
+%------------------------------------------------------------------------------------------------
+
+\newpage
+
+\subsubsection{Logging in using username and password combination}
+
+As an example, logging in using a VUB netID and VUB password is demonstrated. When a user chooses to login using a username / password combination, he is redirected to the screen below:
+
+
+\begin{figure}[H]
+\centering
+    \includegraphics[width=0.8\textwidth]{Prototypes/LoginNamePass.png}
+  \caption{Prototype: login screen}
+\end{figure}
+Next, when the user taps on a textfield to fill his is username or password, a virtual keyboard is displayed.
+
+
+\begin{figure}[H]
+\centering
+    \includegraphics[width=0.8\textwidth]{Prototypes/LoginNamePassKeyboard.png}
+  \caption{Prototype: login screen}
+\end{figure}
+
+%-----------------------------------------------------------------------------------------------
+
+\subsubsection{Making an appointment}
+
+Using the agenda, the user is able to select a day, hour and minute to create an appointment. Selecting a day can be done using a calendar. Next, the hour can be selected. This is done by changing the desired hour. Note that only one hour is shown, but the user is able to change this hour by tapping the arrow up or arrow down icons.
+
+The minutes are divided per 5. This is done because it seemed unnecessary to create appointments per minute. Next to the minutes, on the right side, already existing appointments with the professor / assistant are shown.
+
+The user can select a free slot to create an appointment. This is done by tappping the desired slot. When he does so, the user is redirected to another screen to select the end hour of the appointment.
+
+\begin{figure}[H]
+\centering
+    \includegraphics[width=0.8\textwidth]{Prototypes/MakeAppointment.png}
+  \caption{Prototype: make an appointment}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+    \includegraphics[width=0.8\textwidth]{Prototypes/MakeAppointment2.png}
+  \caption{Prototype: after adjusting the hour and minutes}
+\end{figure}
+The usability requirements state that a user should be able to create an appointment fast. This why everything is kept as intuitive as possible. For example, a calendar is an easy way to select a day and because of the limited space, there has been chosen to display only one hour.
+
+%----------------------------------------------------------------------------------------------
+
+\subsubsection{Selecting the end hour}
+
+When the user has selected the desired starting hour in the previous screen, he is redirected to this screen. Here there exist a possibility to adapt the begin hour and to select the desired end hour. But how does the user know that if he changes the end - or begin hour, the requested time slot has not already been taken? To overcome this, the color of the screen automatically turns red should the user select an invalid, that is, when the requested begin time or end time have already been taken for another appointment. When pressing ``make appointment'', the appointment is actually stored and the user is redirected to the main screen again.
+
+\begin{figure}[H]
+\centering
+    \includegraphics[width=0.8\textwidth]{Prototypes/MaakAfspraakUur.png}
+  \caption{Prototype: agenda of the primary user}
+\end{figure}
+Note that also on this screen, clear labels have been used to indicate the start and end hour.
+
+%-----------------------------------------------------------------------------------------
+
+\subsubsection{After creating the appointment}
+
+After creating the appointment, the user is redirected to the begin / main screen.
+
+\begin{figure}[H]
+\centering
+    \includegraphics[width=0.8\textwidth]{Prototypes/Login.png}
+  \caption{Prototype: agenda of the primary user}
+\end{figure}
+
+%-----------------------------------------------------------------------------------------
+
+\newpage
+
+\subsection{Point of view: primary user}
+
+In the following sections, we will describe the prototypes of the primary user (that is, the professor or the assistant). The difference between the secondary and the primary user are that the primary user can arrange meetings with other collegues, while secondary users cannot. Primary users can also update their availability status so that secondary users are able to see what the primary user is doing or where he or she is right now.
+
+\subsubsection{Logging in}
+
+When the professor or assistant arrives at his / her desk, they have to login as well to authenticate themself. Also for the primary user, four different types of login exist.
+
+These four login possibilities are put together in one screen.
+
+\begin{figure}[H]
+\centering
+    \includegraphics[width=0.8\textwidth]{Prototypes/Login.png}
+  \caption{Prototype: login screen}
+\end{figure}
+As requested in the usability requirements, readability is very important and this is why the entire screen is divided into four regions, each containing one possible method to login. This way, the interface is kept intuitive and easy to use.
+
+%------------------------------------------------------------------------------------------
+
+\subsubsection{Logging in using username and password combination}
+
+As an example, logging in using a VUB netID and VUB password is demonstrated. When a user chooses to login using a username / password combination, he is redirected to the screen below:
+
+
+\begin{figure}[H]
+\centering
+    \includegraphics[width=0.8\textwidth]{Prototypes/LoginNamePass.png}
+  \caption{Prototype: Login using username and password combination}
+\end{figure}
+Next, when the user taps on a textfield to fill his is username or password, a virtual keyboard is displayed.
+
+
+\begin{figure}[H]
+\centering
+    \includegraphics[width=0.8\textwidth]{Prototypes/LoginNamePassKeyboard.png}
+  \caption{Prototype: With virtual keyboard}
+\end{figure}
+
+%------------------------------------------------------------------------------------------
+
+\subsubsection{Arranging a meeting}
+
+When the primary user wants to arrange a meeting, he can do so on the following screen. The screen consists of two tabs. A tab to arrange a meeting and a tab to take a break. When the first tab is selected, that is, the tab to arrange a meeting, the primary user is able to select a starting hour, an end hour and the possibility the select the room or to add and delete users. \\ \\
+To select the starting hour and ending hour, the same controls are used as are being used for the secondary user.
+
+To choose the users whom the primary user wants to arrange a meeting with, he can select those users and click on ``$>>$'' to put them into the right box. Note that the left box contains a list of users still available for a meeting. The right list contains a list of users whom the primary user wants to arrange a meeting with. \\ \\
+After everyhing is set and done, the primary user can click on ``make appointment'' to actually create the meeting.
+
+\begin{figure}[H]
+\centering
+    \includegraphics[width=0.8\textwidth]{Prototypes/MakeAppointmentPrimary.png}
+  \caption{Prototype: Arrange a meeting}
+\end{figure}
+
+%------------------------------------------------------------------------------------------
+
+\subsubsection{Deleting an appointment}
+
+When the user wishes to delete an existing appointment, he can do so by tapping ``delete appointment''. An overview of the time and user is given as well as two buttons. Once confirmation button called ``yes'' and one cancel button called ``no''. When confirming the deletion, the appointment is deleted en when cancelling it, the user is redirected to the previous screen.
+
+
+\begin{figure}[H]
+\centering
+    \includegraphics[width=0.8\textwidth]{Prototypes/Confirmation.png}
+  \caption{Prototype: Arrange a meeting}
+\end{figure}
+As stated in the usability requirements, a yellow warning icon is displayed on the page to attract the user's attention.
+
+%-------------------------------------------------------------------------------------------
+
+\subsubsection{Taking a break}
+
+If the primary user wants to take a break, he can do so by selecting the second tab. On this screen, he can choose out of four possibilities to select the type of break he wants to take. Also the the starting and ending hour can be selected from the scroll list.
+
+\begin{figure}[H]
+\centering
+    \includegraphics[width=0.8\textwidth]{Prototypes/TakeBreak.png}
+  \caption{Prototype: Take a beak}
+\end{figure}
+
+It is stated in the usability requirements that the types of breaks should be indicated by clear and non-ambiguous visuals. Those visuals are indeed clear icons and stand for the type of break the user wants to take.
+
+%------------------------------------------------------------------------------------------
+
+\newpage
+
+\section{Prototype of the big WISE screen}
+
+To describe the prototype of the big WISE screen, we will not make a distinction between primary and secondary users.
+
+\subsection{Availability status of the primary users}
+
+On the big WISE screen, the availability status of all the members of the WISE lab is listed. When a user is not available, ``unavailable'' is displayed in red. To retain the overview, only three persons are listed, but when a user wants to look up other, non-listed members, he can do so by typing in their name in the search textfield.
+
+\begin{figure}[H]
+\centering
+    \includegraphics[width=0.8\textwidth]{Prototypes/WISE.png}
+  \caption{Prototype: Big WISE screen}
+\end{figure}
+One of the usability requirements is that the important users should be listed first. One can observe that the head of the WISE departement, Prof. dr. De Troyer, is listed first, followed by other key peole of the WISE departement. This requirement is clearly fulfilled.
+
+
+%--------------------------------------------------------------------------------------------------------
+% EVALUATION
+%--------------------------------------------------------------------------------------------------------
+
+\chapter{Evaluation}
+
+As stated in the assignment, evaluation of 3 usability requirements is required. The evaluation of those three usability requirements were not performed by the members of our group. Instead, an external user was asked to evaluate our prototype.
+
+First, we will describe the end-user who worked with the prototype, afterwards the tested usability requirements and finally, an evaluation report will be provided.
+
+\section{Description of the external end-user}
+
+\begin{itemize}
+\item \textbf{Name:} Christine Van den Daele
+\item \textbf{Sex:} female
+\item \textbf{Age:} 54
+\item \textbf{Profession:} nurse in a local hospital
+\item \textbf{Level of computer knowledge:} low
+\item \textbf{Level of the English language:} intermediate
+\end{itemize}
+
+Why did we choose this particulary user? Since the purpose of our application is that users can see very quickly and intuitive whether or not a person is avaible and that appointments must also be created as quickly as possible, we decided to opt for a user with a low computer knowledge and an intermediate level of the English language. 
+
+\section{The tested usability requirements}
+
+Listed below are the three usabilty requirements that will be tested.
+
+\begin{itemize}
+\item The user should be able to quickly create an appointment.
+\item The availabilty status should be visible from a great distance.
+\item When text input is needed, an intuitive way is offered.
+\end{itemize}
+
+\section{Evaluation report}
+
+\subsection{Usability requirement 1: the user should be able to quickly create an appointment}
+
+This usability requirement was tested by using a custom scenario. The end-user is Christine Van den Daele.
+
+\subsubsection{Scenario and measuring method}
+
+The user was told she was a student that wishes to make an appointment with the professor to review an assignment that the student has previously handed in. The end-user / student has found its way to the desk of the professor and stands right before the screen hanging next to the professor's door. The appointment should be made as early as possible the next day (that is, tomorrow morning). \\ \\
+But of course, at the testing location, no such screen exists, nor there is a naming plate hanging on the door. So in reality, the end-user stands right before (the laptop) screen and the name of the professor was told beforehand.
+
+The meaning is to make an appointment as quickly as possible, that is, in no more than 3 minutes. This is measured by stopwatching the end-user's actions from the moment he touches the screen until the appointment has been made with the professor (who's name is written on the name plate hanging at the door).
+
+One of our group members holds a digital stopwatch and will write down the time it takes to complete the action.
+
+\subsubsection{Results and remarks}
+
+\begin{itemize}
+\item Time needed to find the option to create an appointment: 2 seconds.
+\item Time needed to choose a login method and to actually login: 30 seconds.
+\item Time needed to choose a date and hour: 45 seconds.
+\item Time needed to confirm the appointment: 5 seconds.
+\item Total time needed: 85 seconds or 1:25 minutes.
+\end{itemize}
+Logging in will probabely have been much faster it the end-user has opt to login using a fingerprint or QR code. But apparently, the end-user has chosen not the easiest way to login. \\ \\
+As stated in the usability requirement, the best level is 2 minutes, the average level is 3 minutes and the worst level is 4 minutes. Since the end-user completed the task in no more then one minute, he falls into the category ``best level''. \\ \\
+However, we might have made the time periods not sever enough. That's why we adjusted the time periods to make them more realistic. Since the computer knowledge of the end-user was quite low, we expect that end-users who have a more advanced computer knowledge, will complete the task ever faster. That is why the time periods have been adjusted. \\ \\
+Since the end-user completed the task that fast, nor the design, nor the work flow needed adjustments.
+
+These are the adjusted time periods:
+\begin{itemize}
+\item Best level: 1 minute
+\item Average level: 2 minutes
+\item Worst level: 3 minutes
+\end{itemize}
+
+
+\subsection{Usability requirement 2: the availabilty status should be visible from a great distance}
+
+This usability requirement was also tested by using a custom scenario. The end-user is Christine Van den Daele.
+
+\subsubsection{Scenario and measuring method}
+
+The user was told she was a student that wishes to make an appointment with the professor to review an assignment that the student has previously handed in. The end-user has found it's way to the corridor of the professor's office and is walking straight towards it. Note that also in this situation, no such office, nor corridor exist. Instead, the office is just a laptop displaying the prototype and the corridor is a corridor in the house of the end-user. \\ \\
+This usability requirement is measured using the commentary / judgement of the user, as stated in the usability requirement. These are the current criteria for judging:
+\begin{itemize}
+\item Worst level: the status is visible from within 3 meters.
+\item Average level: the status is visible from within 5 meters.
+\item Best level: the status is visible from within 7 meters.
+\end{itemize}
+The distance is measured by means of a measuring LINT. From the moment the user is able to see the status, she makes it clear to one of our project members, who then measures the distance between the user and the laptop screen. The starting distance is 10 meters. Note that the end-user is wearing glasses.
+
+\subsubsection{Results and remarks}
+
+Result: distance from within the status is clearly visible: 10 meters. \\ \\
+Remarks:
+\begin{itemize}
+\item The user was told beforehand that the label is colored in green when the professor is avaibable, or colored in red when the professor is not available.
+\end{itemize}
+Right from the start of the scenario, the end-user is able to see the availability status of the professor. That is because the label containing the status is colored in red. Thus even when the actual text is not clearly readable, just by recognizing / seeing the color, the end-user was able to tell whether or not the professor is available. \\ \\
+Because of those results, we adjusted the requirements and redid the experiment. Below are the adjusted requirements:
+\begin{itemize}
+\item Worst level: the status is visible from within 10 meters.
+\item Average level: the status is visible from within 13 meters.
+\item Best level: the status is visible from within 16 meters.
+\end{itemize}
+Now, the end-user started at a distance of 15 meters (the corridor was too small to make the distance even greater. In fact, the end-user was standing in her garden with the door open to be able to have a line of sight with the laptop screen.) \\ \\
+Result: after the user making clear she could see the status, we measured the distance and came to this result. The availability status is visible from within 14 meters.
+
+One can state that the availability status is indeed visible from a very great distance, so there is no need to adjust the user interface (nor the coloring, nor the size of the status).
+
+
+\newpage
+ 
+\subsection{Usability requirement 3: when text input is needed, an intuitive way is offered}
+
+This usability requirement was measured by means of a custom scenario. The end-user is Christine Van den Daele.
+
+\subsubsection{Scenario and measuring method}
+
+The user was told she was a student that wishes to make an appointment with the professor to review an assignment that the student has previously handed in. The end-user / student has found its way to the desk of the professor and stands right before the screen hanging next to the professor's door. The end-user was told to login using her VUB netID (provided beforehand) and VUB password (provided beforehand). We have included some special characters, capital letters and numbers in the password, as well as in the username. Those special letters are the following: \&, $@$ and \%.
+
+Note that, of course, at the testing location, no such screen exists, nor there is a naming plate hanging on the door. So in reality, the end-user stands right before (the laptop) screen. \\ \\
+This usability requirement is measured using the commentary / judgement of the user, as stated in the usability requirement. These are the current criteria for judging:
+\begin{itemize}
+\item{Worst level: not every character is available when a user needs to input something.}
+\item{Average level: the basic characters are available but not every single character is.}
+\item{Best level: every possible character is available.}
+\end{itemize}
+After the username and password have been filled in, the scenario is stopped and the commentary of the end-user regarding the input of the text is written down by one of our group members.
+
+\subsubsection{Results and remarks}
+
+Results: all the normal characters, numbers and capital letter were found very easily. The @ sign was also found immediately, because there exist a seperate button for it. The user needed more time to input \% and \&. She pressed sometimes on the wrong key in an attempt to find those special characters. Eventually, after some time, all the keys were found. \\ \\
+Remarks: the end-user has never worked with this type of text input before, so another user with more computer knowledge, would definitely doing a much better job. \\ \\
+However, since all the characters were input successfully, we meet the usability requirements and therefore we decided not to adjust the requirements, nor the keyboard itself. 
 
 \end{document}

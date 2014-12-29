@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TaskModel xmlns="http://giove.isti.cnr.it/ctt" xmlns:coop="http://giove.isti.cnr.it/cttcoop" NameTaskModelID="Create_Appointment">
+    <Task Identifier="Create_Appointment" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+        <Name>name</Name>
+        <SubTask>
+            <Task Identifier="Check_User" Category="application" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                <Name>name</Name>
+                <TemporalOperator name="SequentialEnablingInfo"/>
+                <Parent name="Create_Appointment"/>
+                <SiblingRight name="Create_Primary_Appointment"/>
+            </Task>
+            <Task Identifier="Create_Primary_Appointment" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                <Name>name</Name>
+                <TemporalOperator name="SequentialEnablingInfo"/>
+                <Parent name="Create_Appointment"/>
+                <SiblingLeft name="Check_User"/>
+                <SiblingRight name="Create_Secondary_Appointment"/>
+            </Task>
+            <Task Identifier="Create_Secondary_Appointment" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                <Name>name</Name>
+                <Parent name="Create_Appointment"/>
+                <SiblingLeft name="Create_Primary_Appointment"/>
+            </Task>
+        </SubTask>
+    </Task>
+</TaskModel>

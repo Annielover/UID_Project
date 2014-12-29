@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TaskModel xmlns="http://giove.isti.cnr.it/ctt" xmlns:coop="http://giove.isti.cnr.it/cttcoop" NameTaskModelID="Login_Voice">
+    <Task Identifier="Login_Voice" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+        <Name>name</Name>
+        <SubTask>
+            <Task Identifier="Voice" Category="interaction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                <Name>name</Name>
+                <TemporalOperator name="SequentialEnablingInfo"/>
+                <Parent name="Login_Voice"/>
+                <SiblingRight name="Process_Authentication"/>
+            </Task>
+            <Task Identifier="Process_Authentication" Category="application" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                <Name>name</Name>
+                <TemporalOperator name="SequentialEnablingInfo"/>
+                <Parent name="Login_Voice"/>
+                <SiblingLeft name="Voice"/>
+                <SiblingRight name="Redirect"/>
+            </Task>
+            <Task Identifier="Redirect" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                <Name>name</Name>
+                <Parent name="Login_Voice"/>
+                <SiblingLeft name="Process_Authentication"/>
+            </Task>
+        </SubTask>
+    </Task>
+</TaskModel>

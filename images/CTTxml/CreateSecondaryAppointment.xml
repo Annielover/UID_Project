@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TaskModel xmlns="http://giove.isti.cnr.it/ctt" xmlns:coop="http://giove.isti.cnr.it/cttcoop" NameTaskModelID="Create_Secondary_Appointment">
+    <Task Identifier="Create_Secondary_Appointment" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+        <Name>name</Name>
+        <SubTask>
+            <Task Identifier="Select_Time" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                <Name>name</Name>
+                <TemporalOperator name="SequentialEnabling"/>
+                <Parent name="Create_Secondary_Appointment"/>
+                <SiblingRight name="Check_Conflicts"/>
+            </Task>
+            <Task Identifier="Check_Conflicts" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                <Name>name</Name>
+                <TemporalOperator name="SequentialEnablingInfo"/>
+                <Parent name="Create_Secondary_Appointment"/>
+                <SiblingLeft name="Select_Time"/>
+                <SiblingRight name="Confirm"/>
+            </Task>
+            <Task Identifier="Confirm" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                <Name>name</Name>
+                <Parent name="Create_Secondary_Appointment"/>
+                <SiblingLeft name="Check_Conflicts"/>
+                <SubTask>
+                    <Task Identifier="Confirm_Appointment" Category="application" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                        <Name>name</Name>
+                        <TemporalOperator name="SequentialEnabling"/>
+                        <Parent name="Confirm"/>
+                        <SiblingRight name="Press_Confirm"/>
+                    </Task>
+                    <Task Identifier="Press_Confirm" Category="interaction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                        <Name>name</Name>
+                        <TemporalOperator name="SequentialEnabling"/>
+                        <Parent name="Confirm"/>
+                        <SiblingLeft name="Confirm_Appointment"/>
+                        <SiblingRight name="Press_Cancel"/>
+                        <SubTask>
+                            <Task Identifier="Redirect" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+<Name>name</Name>
+<Parent name="Press_Confirm"/>
+                            </Task>
+                        </SubTask>
+                    </Task>
+                    <Task Identifier="Press_Cancel" Category="interaction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                        <Name>name</Name>
+                        <Parent name="Confirm"/>
+                        <SiblingLeft name="Press_Confirm"/>
+                        <SubTask>
+                            <Task Identifier="Redirect" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+<Name>name</Name>
+<Parent name="Press_Cancel"/>
+                            </Task>
+                        </SubTask>
+                    </Task>
+                </SubTask>
+            </Task>
+        </SubTask>
+    </Task>
+</TaskModel>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TaskModel xmlns="http://giove.isti.cnr.it/ctt" xmlns:coop="http://giove.isti.cnr.it/cttcoop" NameTaskModelID="Login">
+    <Task Identifier="Login" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+        <Name>name</Name>
+        <SubTask>
+            <Task Identifier="Login_Fingerprint" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                <Name>name</Name>
+                <TemporalOperator name="Choice"/>
+                <Parent name="Login"/>
+                <SiblingRight name="Login_Normal"/>
+            </Task>
+            <Task Identifier="Login_Normal" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                <Name>name</Name>
+                <TemporalOperator name="Choice"/>
+                <Parent name="Login"/>
+                <SiblingLeft name="Login_Fingerprint"/>
+                <SiblingRight name="Login_Voice"/>
+            </Task>
+            <Task Identifier="Login_Voice" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                <Name>name</Name>
+                <TemporalOperator name="Choice"/>
+                <Parent name="Login"/>
+                <SiblingLeft name="Login_Normal"/>
+                <SiblingRight name="Login_QR_Code"/>
+            </Task>
+            <Task Identifier="Login_QR_Code" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                <Name>name</Name>
+                <Parent name="Login"/>
+                <SiblingLeft name="Login_Voice"/>
+            </Task>
+        </SubTask>
+    </Task>
+</TaskModel>
